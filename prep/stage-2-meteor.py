@@ -3,10 +3,10 @@ import re
 
 eingang_bohrer = 0
 n = 0
-ordner = Path(__file__).parent
-datei = "in_level-1_beispiel.txt"
+ordner = Path(r"C:\Users\david\coding_projects\CCC-2026\prep\input")
+datei = "in_level-2_2-large.txt"
 zeilen = [z for z in (ordner / datei).read_text().splitlines() if z]
-ausgabe_datei = ordner / "meteoriten_ausgabe.txt"
+ausgabe_datei = ordner / "ausgabel2.txt"
 
 zahlen = []
 meteoriten = []
