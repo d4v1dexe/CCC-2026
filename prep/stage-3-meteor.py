@@ -33,6 +33,7 @@ while i < len(zeilen):
         print(f"Meteorit: x = {x}, y = {y}")
 
         location = None
+        seitwaerts = 0
         for zeile in block:
             if "S" in zeile:
                 location = zeile.index("S")
@@ -43,17 +44,25 @@ while i < len(zeilen):
                     meteoriten.append("")
                 else:
                     zeile_liste = list(zeile)
-                    zeile_liste[location] = "X"
+                    if seitwaerts == 1:
+                        c = location
+                        while zeile_liste[c] != "#":
+                            zeile_liste[c] = "X"
+                            c -= 1
+                    elif seitwaerts == 0:
+                        zeile_liste[location] = "X"
                     zeile = "".join(zeile_liste)
                     meteoriten.append(zeile)
                     if y >= x and location != 2:
                         location = 2
+                    elif x > y:
+                        seitwaerts += 1
     else:
         zahlen.append(zeilen[i])
         i += 1
-
+"""""
 print(zeilen)
 print("\n", zahlen)
 print("\n", meteoriten)
-
+"""""
 ausgabe_datei.write_text("\n".join(meteoriten), encoding="utf-8")
